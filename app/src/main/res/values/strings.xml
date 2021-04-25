@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">TugasRancang</string>
+    <string name="masuk">Masuk</string>
+    <string name="email_kamu">Email Kamu</string>
+    <string name="kata_sandi">Kata Sandi</string>
+    <string name="masukbutton">Masuk</string>
+    <string name="belum_mempunyai_akun">Belum mempunyai akun? Daftar</string>
+    <string name="daftar">Daftar</string>
+    <string name="sudah_memiliki_akun_masuk">Sudah memiliki akun? Masuk</string>
+    <string name="daftarbutton">Daftar</string>
+    <string name="konfirmasi_kata_sandi">Konfirmasi kata sandi</string>
+    <string name="saldo">Saldo</string>
+    <string name="cpc">CPC</string>
+    <string name="rupiah_token">Rupiah Token</string>
+    <string name="deposit">Deposit</string>
+    <string name="masukkan_nominal_uang">Masukkan Nominal Uang</string>
+    <string name="top_up">Top Up</string>
+    <string name="komunitas">Komunitas</string>
+    <string name="coming_soon">Coming soon</string>
+    <string name="jual_beli_crypto">Jual Beli Crypto</string>
+    <string name="dapatkan_uang_ratusan_ribu_rupiah_lumayan_bisa_menambah_uang_jajan_kuliah_kamu">Dapatkan uang ratusan ribu rupiah lumayan bisa menambah uang jajan kuliah kamu!</string>
+    <string name="ajak_teman_kamu">Ajak Teman Kamu</string>
+    <string name="nama">Nama</string>
+    <string name="email">Email :</string>
+    <string name="fullname">Fullname :</string>
+    <string name="email_address">Email Address</string>
+    <string name="log_out">Log Out</string>
+</resources>

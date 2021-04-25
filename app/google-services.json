@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "601154480925",
+    "project_id": "tugasrancang-2763b",
+    "storage_bucket": "tugasrancang-2763b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:601154480925:android:d85b8bbc8a02b4899d8ff4",
+        "android_client_info": {
+          "package_name": "com.example.tugasrancang"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "601154480925-v8edbanh1ve95t8j90jom2dvu1tso0mp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCv4ka4eO81gNL5dlAB6wvLsO8tG3_2T9A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "601154480925-v8edbanh1ve95t8j90jom2dvu1tso0mp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
