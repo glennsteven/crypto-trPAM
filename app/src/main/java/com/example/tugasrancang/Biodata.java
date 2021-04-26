@@ -14,10 +14,6 @@ class Biodata {
     public Biodata(String fullname, String email){
         this.fullname = fullname;
         this.email = email;
-        this.topUp = topUp;
-    }
 
-    public String getTopUp(){
-        return topUp;
     }
 }

@@ -47,14 +47,12 @@ public class Profile extends AppCompatActivity {
            @Override
            public void onClick(View v) {
                FirebaseAuth.getInstance().signOut();
-               Intent intent = new Intent(Profile.this, MainActivity.class);
+               Intent intent = new Intent(Profile.this, Profile.class);
                startActivity(intent);
                finish();
            }
        });
 
-//       final TextView txt_fullname2 = findViewById(R.id.txt_fullname2);
-//       final TextView txt_email2 = findViewById(R.id.txt_email2);
        reference.child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
            @Override
            public void onDataChange(@NonNull DataSnapshot snapshot) {

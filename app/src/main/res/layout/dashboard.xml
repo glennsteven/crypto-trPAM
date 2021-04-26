@@ -64,14 +64,15 @@
                             android:textSize="20dp"
                             android:textStyle="bold"
                             android:textColor="#FFFFFF"/>
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/rupiah_token"
-                            android:textSize="18dp"
-                            android:textStyle="bold"
                             android:layout_marginLeft="120dp"
-                            android:textColor="#FFFFFF"/>
+                            android:text="@string/rupiah_token"
+                            android:textColor="#FFFFFF"
+                            android:textSize="18dp"
+                            android:textStyle="bold" />
 
                     </LinearLayout>
 
@@ -79,16 +80,24 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="40dp"
-                        android:orientation="vertical"
+                        android:orientation="horizontal"
                         android:padding="15dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/rp"
+                            android:textSize="25dp"/>
 
                         <TextView
                             android:id="@+id/txt_saldo"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:hint="@string/rupiah_token"
+                            android:hint="@string/_0"
                             android:textColor="#FFFFFF"
-                            android:textSize="25dp" />
+                            android:textSize="25dp"
+                            android:layout_marginLeft="8dp"
+                            android:textStyle="bold"/>
 
 
                     </LinearLayout>
@@ -263,6 +272,30 @@
                 android:textStyle="bold"
                 android:textColor="#000000"/>
 
+            <androidx.cardview.widget.CardView
+                android:layout_width="320dp"
+                android:layout_height="80dp"
+                app:cardCornerRadius="10dp"
+                app:cardBackgroundColor="#FFF5FF"
+                android:layout_marginTop="50dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/bitcoin"
+                        android:padding="15dp"
+                        android:textSize="20dp"
+                        android:textColor="#000000"
+                        android:textStyle="bold"/>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
         </RelativeLayout>
 
 
@@ -317,6 +350,7 @@
                     android:layout_margin="16dp"
                     app:cardBackgroundColor="#F42222"
                     app:cardCornerRadius="15dp">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

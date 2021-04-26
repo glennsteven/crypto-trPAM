@@ -30,6 +30,7 @@ public class Top_up extends Activity {
     private EditText nominal;
     private Button btn_topUp;
     private String userId;
+    String topUpWallet;
     private DatabaseReference mFirebaseDatabase;
     public static final String TAG="";
     @Override
@@ -47,43 +48,52 @@ public class Top_up extends Activity {
         btn_topUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String topUp = nominal.getText().toString();
+                topUpWallet = nominal.getText().toString();
                     if (TextUtils.isEmpty(userId)){
-                        createTransaksi(topUp);
+                        createTransaksi(topUpWallet);
                     }else {
-                        updateTransaksi(topUp);
+                        mFirebaseDatabase.child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                Biodata biodata = snapshot.getValue(Biodata.class);
+                                Log.e(TAG, "onDataChangeBiodata: "+biodata );
+                                if (biodata != null){
+                                    String dompet = biodata.topUp;
+                                    Log.e(TAG, "onDataChange: "+dompet );
+
+                                    if (dompet.contains(",")){
+                                        dompet = dompet.replaceAll(",","");
+                                        Log.e(TAG, "onDataChange(Dompet): "+dompet);
+                                        Double dompet2 = Double.parseDouble(dompet);
+
+                                        if (topUpWallet.contains(",")){
+                                            topUpWallet = topUpWallet.replaceAll(",","");
+                                        }
+                                        Double masukkan = Double.parseDouble(topUpWallet);
+                                        Log.e(TAG, "onDataChange(Masukkan): "+masukkan);
+
+                                        Double hasil = dompet2 + masukkan;
+                                        Log.e(TAG, "onDataChange: "+ hasil );
+
+                                        String converthasil = Double.toString(hasil);
+                                        if (!TextUtils.isEmpty(converthasil)){
+                                            mFirebaseDatabase.child(userId).child("topUp").setValue(converthasil);
+                                        }
+                                    }
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+                        updateTransaksi(topUpWallet);
 
                     }
             }
         });
-//        mFirebaseDatabase.child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                Biodata biodata = snapshot.getValue(Biodata.class);
-//                if (biodata != null){
-//                    String dompet = biodata.topUp;
-//                    if (dompet.contains(",")){
-//                        dompet.replaceAll(","," ");
-//                        Log.e(TAG, "onDataChange(Dompet): "+dompet );
-//                        Double dompet2 = Double.parseDouble(dompet);
-//
-//                        Double masukkan = Double.parseDouble(nominal.getText().toString());
-//                        Log.e(TAG, "onDataChange(Masukkan): "+masukkan );
-//
-//                        Double hasil = dompet2 + masukkan;
-//                        String converthasil = Double.toString(hasil);
-//                        if (!TextUtils.isEmpty(converthasil)){
-//                            mFirebaseDatabase.child(userId).child("Saldo").setValue(converthasil);
-//                        }
-//                    }
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
+
         toggleButton();
     }
     private void toggleButton(){
@@ -103,28 +113,8 @@ public class Top_up extends Activity {
 
         mFirebaseDatabase.child(userId).setValue(biodata);
 
-        addUserChangeListener();
     }
 
-    private void addUserChangeListener() {
-        mFirebaseDatabase.child(userId).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot snapshot) {
-                Biodata biodata = snapshot.getValue(Biodata.class);
-                if (biodata == null){
-                    Log.e(TAG, "Data user null");
-                    return;
-                }
-                Log.e(TAG,"Data User berubah"+biodata.getTopUp());
-                toggleButton();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Log.e(TAG,"Gagal membaca data");
-            }
-        });
-    }
 
     private void updateTransaksi(String topUp){
         Biodata biodata = new Biodata(topUp);
@@ -137,7 +127,7 @@ public class Top_up extends Activity {
                     Toast.makeText(Top_up.this, "Transaksi Berhasil",Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(Top_up.this,DashboardActicity.class);
                     startActivity(intent);
-                    onDestroy();
+                    finish();
                 }
             });
         }

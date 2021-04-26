@@ -25,4 +25,7 @@
     <string name="fullname">Fullname :</string>
     <string name="email_address">Email Address</string>
     <string name="log_out">Log Out</string>
+    <string name="rp">Rp.</string>
+    <string name="_0">0</string>
+    <string name="bitcoin">Bitcoin</string>
 </resources>
