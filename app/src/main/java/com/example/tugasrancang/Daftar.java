@@ -94,11 +94,31 @@ public class Daftar extends Activity {
                             .setValue(biodata).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
+                            FirebaseDatabase.getInstance().getReference("Saldo")
+                                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("topUp")
+                                    .setValue("0").addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()){
+
+                                        Toast.makeText(Daftar.this, "Pendaftaran akun berhasil!",Toast.LENGTH_SHORT).show();
+                                        Intent intent = new Intent(Daftar.this,MainActivity.class);
+                                        startActivity(intent);
+                                        finish();
+
+                                    }else {
+                                        Toast.makeText(Daftar.this, "Pendaftaran akun gagal!",Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
+
                             if (task.isSuccessful()){
+
                                 Toast.makeText(Daftar.this, "Pendaftaran akun berhasil!",Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(Daftar.this,MainActivity.class);
                                 startActivity(intent);
                                 finish();
+
                             }else {
                                 Toast.makeText(Daftar.this, "Pendaftaran akun gagal!",Toast.LENGTH_SHORT).show();
                             }
@@ -110,6 +130,18 @@ public class Daftar extends Activity {
                 progressDialog.dismiss();
             }
         });
+        Biodata biodata = new Biodata();
+        FirebaseDatabase.getInstance().getReference("Saldo").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(biodata)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()){
+                            Toast.makeText(Daftar.this, "Pendaftaran akun berhasil!",Toast.LENGTH_SHORT).show();
+                        }else{
+                            Toast.makeText(Daftar.this, "Pendaftaran akun gagal!",Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
     }
     private Boolean isValidEmail(CharSequence target){
         return (!TextUtils.isEmpty(target) && Patterns.EMAIL_ADDRESS.matcher(target).matches());
