@@ -67,7 +67,6 @@ public class DashboardActicity extends AppCompatActivity {
                 finish();
             }
         });
-
             reference.child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -85,5 +84,6 @@ public class DashboardActicity extends AppCompatActivity {
 
             }
         });
-    }
+
+        }
 }
